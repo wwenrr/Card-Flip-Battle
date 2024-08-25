@@ -1,0 +1,115 @@
+.icr_box {
+    margin: auto;
+    margin-top: 4vh;
+    // background-color: rebeccapurple;
+    width: 40vw;
+
+    .text {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .input_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3vh;
+        text-align: center;
+
+        .x {
+            display: inline;
+            padding-left: 1vw;
+            padding-right: 1vw;
+            font-size: 2vw;
+        }
+
+        input {
+            background-color: #DFDFDF;
+            border: none;
+            height: 7rem;
+            border-radius: 20px;
+            width: 20%;
+            font-size: 4rem;
+            text-align: center;
+        }
+    }
+}
+
+.pokemon-gallery {
+    width: 80vw;
+    margin: auto;
+    margin-top: 7vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1px;
+
+    .container {
+        text-align: center;
+        width: 120px;
+        height: 120px;
+        background-color: antiquewhite;
+        position: relative;
+        cursor: pointer;
+
+        .card {
+            position: absolute;
+            width: 90%;    
+            height: 90%;
+            transform-style: preserve-3d;
+            transition: all .5s ease;
+            
+
+            .front {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            .back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                transform: rotateY(180deg);
+            }
+        }
+
+        .card:hover {
+            // transform: rotateY(180deg);
+        }
+    }
+}
+
+
+
+
+
+
+/* Skeleton.css */
+.skeleton {
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    margin-top: 7vh;
+    background-color: #e0e0e0;
+    background-image: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px; /* Tùy chỉnh góc bo tròn nếu cần */
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
