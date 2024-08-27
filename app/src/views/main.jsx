@@ -28,12 +28,12 @@ function Games({ dai, rong }) {
 
     useEffect(() => {
         (async () => {
-            dai = parseInt(dai, 10)
-            rong = parseInt(rong, 10)
-            console.log(dai * rong);
+            const dai1 = parseInt(dai, 10)
+            const rong1 = parseInt(rong, 10)
+            console.log(dai1 * rong1);
 
             let urls = []
-            for (let i = 1; i <= dai * rong; i++) {
+            for (let i = 1; i <= dai1 * rong1; i++) {
                 console.log(i);
                 const url = await getPokemonImage(i);
                 if (url) urls.push(url);
@@ -58,6 +58,7 @@ function Games({ dai, rong }) {
         console.log(a);
 
         if(a === -1) {
+            if(travel[e.currentTarget.id] === 1) return;
             e.currentTarget.style.transform = "rotateY(180deg)";
             a = e.currentTarget.id
             console.log("ID của phần tử:", a);
@@ -66,6 +67,7 @@ function Games({ dai, rong }) {
         }
         
         else if(b === -1) {
+            if(travel[e.currentTarget.id] === 1) return;
             e.currentTarget.style.transform = "rotateY(180deg)";
             b = e.currentTarget.id
             console.log("ID của phần tử:", a);
@@ -78,7 +80,7 @@ function Games({ dai, rong }) {
 
     useEffect(() => {
         console.log("Step:", step);
-        if(step == poke.length && step != 0) {alert("Anh Bạn Đúng Là Thiên Tài, ok để chơi lại"); window.location.reload(true);}
+        if(step === poke.length && step !== 0) {alert("Anh Bạn Đúng Là Thiên Tài, ok để chơi lại"); window.location.reload(true);}
             
     }, [step])
 
@@ -94,13 +96,13 @@ function Games({ dai, rong }) {
         const b = poke[move[1]];
         console.log(move);
         
-        if(move[0] == move[1] && (move[0] != -1 || move[1] != -1)) {
+        if(move[0] === move[1] && (move[0] !== -1 || move[1] !== -1)) {
             setMove([-1,-1])
             console.log("Click 1 chỗ ăn cc à cu");
             const ele1 = document.getElementById(move[0])
             ele1.style.transform = "none";
         }
-        else if(move[0] != -1 && move[1] != -1) {
+        else if(move[0] !== -1 && move[1] !== -1) {
             if(a===b) {
                 await sleep(500);
                 console.log("Hai thẻ giống nhau!");
@@ -111,7 +113,7 @@ function Games({ dai, rong }) {
                 setTravel(arr)
                 setStep(step+2);
             }
-            else if(a!=b) {
+            else if(a!==b) {
                 await sleep(1000);
                 console.log("Hai thẻ khác nhau!");
                 const ele1 = document.getElementById(move[0])
@@ -139,7 +141,7 @@ function Games({ dai, rong }) {
                         <>
                             <div className="container">
                                 <div className="card" onClick={handleCLick} id={index}>
-                                    <div className="front" id={index+100}></div>
+                                    <div className="front" id={index+10000}></div>
                                     <div className="back">
                                         <img key={index} src={image} alt={`Pokémon ${index + 1}`} />
                                     </div>
@@ -170,7 +172,7 @@ function Main(params) {
             console.log('Nhấn Enter, giá trị hiện tại:', daiValue);
         }
 
-        if ((numVal >= 1 && numVal <= 9 || val === '')) {
+        if ((numVal >= 1 && numVal <= 9) || val === '') {
             setDaiValue(val);
         }
     };
@@ -181,7 +183,7 @@ function Main(params) {
         if (e.type === 'keydown' && e.key === 'Enter') {
             console.log('Nhấn Enter, giá trị hiện tại:', daiValue);
         }
-        if ((numVal >= 1 && numVal <= 9 || val === '')) {
+        if ((numVal >= 1 && numVal <= 9) || val === '') {
             setRongValue(val);
         }
     };
